@@ -1,0 +1,40 @@
+<zk xmlns:ca="client/attribute">
+    <style>
+        input:checked + .z-checkbox-content {
+            text-decoration: line-through;
+            color: grey;
+        }
+    </style>
+    <vlayout>
+        <listbox id="list" model="${todoList}" ca:data-springmvc-action="edit"
+                 ca:data-springmvc-trigger="onSelect">
+            <listhead>
+                <listheader label="Message"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell>
+                        <checkbox label="${each.message}" checked="${each.done}" value="${each}" ca:data-springmvc-action="finish" ca:data-springmvc-trigger="onCheck"/>
+                    </listcell>
+                </listitem>
+            </template>
+        </listbox>
+        <div>
+            <label id="status" value="Add:"/>
+            <grid id="form">
+                <columns>
+                    <column label="Message"/>
+                </columns>
+                <rows>
+                    <row>
+                        <textbox id="message" cols="40"/>
+                    </row>
+                    <row>
+                        <button id="submit" label="Add new Todo"
+                                ca:data-springmvc-action="add"/>
+                    </row>
+                </rows>
+            </grid>
+        </div>
+    </vlayout>
+</zk>

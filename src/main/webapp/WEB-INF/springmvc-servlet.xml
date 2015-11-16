@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+    <!-- Setup the ZK SpringMVC extension -->
+    <context:annotation-config/>
+    <bean class="org.zkoss.zkspringmvc.config.ZKWebMvcConfigurerAdapter"/>
+
+
+ 	<context:component-scan base-package="org.zkoss.zkspringmvc.demo" />
+
+    <bean id="viewResolver" class="org.zkoss.zkspringmvc.ZKUrlBasedViewResolver">
+        <property name="viewClass" value="org.zkoss.zkspringmvc.ZKView"/>
+        <property name="prefix" value="/WEB-INF/" />
+        <property name="suffix" value="" />
+    </bean>
+</beans>
