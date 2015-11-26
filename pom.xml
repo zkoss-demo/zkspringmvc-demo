@@ -27,6 +27,10 @@
 			<name>ZK CE Repository</name>
 			<url>http://mavensync.zkoss.org/maven2</url>
 		</repository>
+        <repository>
+            <id>ZK PE/EE Evaluation</id>
+            <url>http://mavensync.zkoss.org/eval/</url>
+        </repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
@@ -61,7 +65,7 @@
         <dependency>
             <groupId>org.zkoss.zkspringmvc</groupId>
             <artifactId>zkspringmvc</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0-SNAPSHOT-Eval</version>
         </dependency>
         
 		<!-- Spring 3 dependencies -->
