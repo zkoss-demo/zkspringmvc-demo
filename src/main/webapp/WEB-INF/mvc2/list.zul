@@ -1,0 +1,54 @@
+<zk xmlns:ca="client/attribute">
+    <vlayout>
+        <apply template="todo" dynamicValue="true">
+            <template name="todo">
+                <listbox id="list" model="${todoList}" ca:data-springmvc-action="edit" ca:data-springmvc-trigger="onSelect">
+                    <listhead>
+                        <listheader label="Message">
+                            <checkbox label="readonly" ca:data-springmvc-action="changeTemplate" onCheck="div1.setVisible(false)"/>
+                        </listheader>
+                    </listhead>
+                    <template name="model">
+                        <listitem>
+                            <listcell>
+                                <checkbox label="${each.message}" checked="${each.done}" value="${each}" ca:data-springmvc-action="finish" ca:data-springmvc-trigger="onCheck"/>
+                            </listcell>
+                        </listitem>
+                    </template>
+                </listbox>
+            </template>
+            <template name="memo">
+                <listbox id="list" model="${todoList}" ca:data-springmvc-trigger="onSelect">
+                    <listhead>
+                        <listheader label="Message">
+                            <checkbox label="readonly" checked="true" ca:data-springmvc-action="changeTemplate" onCheck="div1.setVisible(true)"/>
+                        </listheader>
+                    </listhead>
+                    <template name="model">
+                        <listitem>
+                            <listcell>
+                                <label value="${each.message}"/>
+                            </listcell>
+                        </listitem>
+                    </template>
+                </listbox>
+            </template>
+        </apply>
+        <div id="div1">
+            <label id="status" value="Add:"/>
+            <grid id="form">
+                <columns>
+                    <column label="Message"/>
+                </columns>
+                <rows>
+                    <row>
+                        <textbox id="message" cols="40"/>
+                    </row>
+                    <row>
+                        <button id="submit" label="Add new Todo" ca:data-springmvc-action="add"/>
+                    </row>
+                </rows>
+            </grid>
+        </div>
+    </vlayout>
+</zk>

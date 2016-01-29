@@ -9,7 +9,7 @@
 
 Copyright (C) 2015 Potix Corporation. All Rights Reserved.
 */
-package org.zkoss.zkspringmvc.demo.mvc;
+package org.zkoss.zkspringmvc.demo.mvc2;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -29,9 +29,9 @@ import org.zkoss.zul.Textbox;
  * @author jumperchen
  */
 @Controller
-@RequestMapping("/mvc/todos")
+@RequestMapping("/mvc/todos2")
 @SessionAttributes("todoList")
-public class TodoController {
+public class TodoController2 {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(ModelMap model) {
@@ -50,9 +50,9 @@ public class TodoController {
 		return ZKModelAndView.SELF;
 	}
 
-	@RequestMapping(value = "/list", method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
 	public String list() {
-		return "mvc/list.zul";
+		return "mvc2/list.zul";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -100,4 +100,11 @@ public class TodoController {
 
 		return "forward:list";
 	}
+
+	@RequestMapping(value = "/changeTemplate",  method = RequestMethod.POST)
+	public String changeTemplate(@ZKVariable("self.checked") Boolean checked) {
+		return checked ? "::shadow:memo" : "::shadow:todo";
+		//in this version of zkspringmvc, "::shadow" would only select the first shadow root instead of selecting all shadow roots.
+	}
+
 }
