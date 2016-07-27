@@ -100,7 +100,7 @@
         <dependency>
             <groupId>org.zkoss.zkspringmvc</groupId>
             <artifactId>zkspringmvc</artifactId>
-            <version>1.0-SNAPSHOT-Eval</version>
+            <version>1.0.FL.20160726-Eval</version>
         </dependency>
         
 		<!-- Spring 3 dependencies -->
